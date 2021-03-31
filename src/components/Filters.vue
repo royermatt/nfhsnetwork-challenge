@@ -66,10 +66,10 @@
         });
       },
       setDateRange(value) {
-        let today = new Date();
-        let tomorrow = new Date((new Date()).setDate(today.getDate() + 1));
-        let endOfWeek = new Date((new Date()).setDate(today.getDate() - (today.getDay() - 1) + 6));
-        let friday = new Date((new Date()).setDate(endOfWeek.getDate() - 2));
+        let today = moment();
+        let tomorrow = moment(today).add(1, 'days');
+        let endOfWeek = moment(today).endOf('week').add(1, 'days');
+        let friday = moment(endOfWeek).subtract(2, 'days');
 
         const dateRangeMapping = {
           All: {
